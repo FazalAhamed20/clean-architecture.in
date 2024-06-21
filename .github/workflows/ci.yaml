@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - main
+
 jobs:
   build:
     name: Build and push Docker images
@@ -25,28 +26,28 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
-      - name: Build and push admin
+      - name: Build and push admin image
         uses: docker/build-push-action@v2
         with:
           context: ./admin
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/admin:latest
       
-      - name: Build and push cart-service
+      - name: Build and push cart-service image
         uses: docker/build-push-action@v2
         with:
           context: ./cart-service
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/cart-service:latest
         
-      - name: Build and push product
+      - name: Build and push product image
         uses: docker/build-push-action@v2
         with:
           context: ./product
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/product:latest
       
-      - name: Build and push user
+      - name: Build and push user image
         uses: docker/build-push-action@v2
         with:
           context: ./user
