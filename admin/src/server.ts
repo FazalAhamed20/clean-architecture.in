@@ -1,6 +1,7 @@
 import express,{ NextFunction, Request, Response} from "express"
 import {dbConnection} from './database'
 import router from "./routes/Route"
+import {sendHello} from '../src/kafka/producer/hello'
 
 
 
@@ -11,6 +12,7 @@ const port:number=3004
 
 app.use(express.json())
 dbConnection()
+sendHello()
 
 
 app.use((

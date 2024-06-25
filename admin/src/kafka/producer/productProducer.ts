@@ -21,7 +21,14 @@ export const productCreatedProducer = async (
                 messages: [{
                     key: 'productCreated',
                     value: JSON.stringify(data)
-                }]
+                },]
+            },
+            {
+                topic: 'to-product',
+                messages: [{
+                    key: 'haisend',
+                    value: 'hai'
+                },]
             }
         ];
 
